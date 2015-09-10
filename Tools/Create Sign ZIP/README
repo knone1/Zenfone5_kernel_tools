@@ -1,0 +1,8 @@
+
+in prokect dir place a boot.img and compress via zip and sign use command below
+
+
+For sign and create zip flashable
+
+java -jar signapk.jar testkey.x509.pem testkey.pk8 name.zip name-outpus-sign.zip
+

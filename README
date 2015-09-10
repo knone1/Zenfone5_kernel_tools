@@ -1,0 +1,59 @@
+
+
+download the toolchain 
+
+https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.8/+/android-5.1.1_r13
+
+place on
+
+prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.8
+
+## 	TARGET_DEVICE=hd  (A500CG/A501CG/A600CG - default)
+
+For building kerne from source
+
+1 make -f KernelMakefile TARGET_DEVICE=hd build_kernel
+ or
+1 make -f KernelMakefile TARGET_DEVICE=hd modules_install
+
+after building the kernel from source this is how to generate the .dep files needed
+modules.alias
+modules.alias.bin
+modules.builtin.bin
+modules.dep
+modules.dep.bin
+modules.devname
+modules.softdep
+modules.symbols
+modules.symbols.bin
+
+
+that file is generated and need if zenfone 5 kernel run with modules i suggest to fix the kernel to be run
+all modules to be built in
+
+the command need to generate this file is beloc in you terminal
+
+
+make -f KernelMakefile TARGET_DEVICE=hd copy_modules_to_root
+
+after success you will find all module on out/target/product/asusctp_hd/root
+
+copy thins in ramdisk and start to pack the kernel
+
+
+
+pack ramdisk.cio.gz
+
+find . | cpio -o -H newc | gzip > ../ramdisk.cpio.gz
+
+
+pach the boot image 
+
+Teminal command for pack
+
+pack_intel boot.img bzImage ramdisk.cpio.gz new_boot.img
+
+
+Teminal command for unpack
+
+unpack_intel boot.img bzImage ramdisk.cpio.gz

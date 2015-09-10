@@ -1,0 +1,12 @@
+Teminal command for pack
+
+pack_intel boot.img bzImage ramdisk.cpio.gz new_boot.img
+
+
+Teminal command for unpack
+
+unpack_intel boot.img bzImage ramdisk.cpio.gz
+
+Pack ramdisk.gz
+
+find . | cpio -o -H newc | gzip > ../ramdisk.cpio.gz
