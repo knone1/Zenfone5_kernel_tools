@@ -27,32 +27,26 @@ modules.softdep
 modules.symbols
 modules.symbols.bin
 
-
 that file is generated and need if zenfone 5 kernel run with modules i suggest to fix the kernel to be run
 all modules to be built in
 
 the command need to generate this file is beloc in you terminal
 
-
 make -f KernelMakefile TARGET_DEVICE=hd copy_modules_to_root
 
 after success you will find all module on out/target/product/asusctp_hd/root
 
-copy thins in ramdisk and start to pack the kernel
-
-
+copy ramdisk and start to pack the kernel
 
 pack ramdisk.cio.gz
 
 find . | cpio -o -H newc | gzip > ../ramdisk.cpio.gz
-
 
 pach the boot image 
 
 Teminal command for pack
 
 pack_intel boot.img bzImage ramdisk.cpio.gz new_boot.img
-
 
 Teminal command for unpack
 
